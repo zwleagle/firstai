@@ -67,18 +67,18 @@ batch_size1 = y.shape[0]
 print(y[np.arange(batch_size1), t1])
 
 
-# y=np.array([[0,1,0.1,0,0,0,0,0,0,0],[0,0,0.2,0.8,0,0,0,0,0,0]])
-# t_onehot=np.array([[0,1,0,0,0,0,0,0,0,0],[0,0,0,1,0,0,0,0,0,0]])#one-hot
-#
-# t = t_onehot.argmax(axis=1)#非one-hot
-# print(t)
-# batch_size = y.shape[0]
-# print(batch_size)#2
-# k=y[np.arange(batch_size), t] # [y[0,1] y[1,3]]
-# print(k)
-# print(k)#[1.  0.8]
-# r=-np.sum(np.log(y[np.arange(batch_size), t] + 1e-7))/ batch_size
-# print(r)#0.11157166315711126
+y=np.array([[0,1,0.1,0,0,0,0,0,0,0],[0,0,0.2,0.8,0,0,0,0,0,0]])
+t_onehot=np.array([[0,1,0,0,0,0,0,0,0,0],[0,0,0,1,0,0,0,0,0,0]])#one-hot
+
+t = t_onehot.argmax(axis=1)#非one-hot
+print(t)
+batch_size = y.shape[0]
+print(batch_size)#2
+k=y[np.arange(batch_size), t] # [y[0,1] y[1,3]]
+print(k)
+print(k)#[1.  0.8]
+r=-np.sum(np.log(y[np.arange(batch_size), t] + 1e-7))/ batch_size
+print(r)#0.11157166315711126
 
 def numerical_diff(f, x):
     h = 1e-4  # 0.0001
