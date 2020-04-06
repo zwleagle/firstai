@@ -27,7 +27,7 @@ def relu_grad(x):
     grad[x>=0] = 1
     return grad
     
-
+# softmax分类函数, 计算各个值的概率
 def softmax(x):
     if x.ndim == 2:
         x = x.T
@@ -50,12 +50,12 @@ def cross_entropy_error(y, t):
         
     # 监督数据是one-hot-vector的情况下，转换为正确解标签的索引
     if t.size == y.size:
-        t = t.argmax(axis=1)
+        t = t.argmax(axis=1) #这个t是按行搜索得到的最大的那个数的索引，不是最大的那个数
              
     batch_size = y.shape[0]
     return -np.sum(np.log(y[np.arange(batch_size), t] + 1e-7)) / batch_size
 
-
+#
 def softmax_loss(X, t):
     y = softmax(X)
     return cross_entropy_error(y, t)

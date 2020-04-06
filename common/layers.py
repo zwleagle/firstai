@@ -9,13 +9,19 @@ class Relu:
         self.mask = None
 
     def forward(self, x):
+        #这个变量mask是由True/False构成的NumPy数
+        #组，它会把正向传播时的输入 x的元素中小于等于0的地方保存为 True，其
+        #他地方（大于0的元素）保存为 False
         self.mask = (x <= 0)
         out = x.copy()
-        out[self.mask] = 0
+        out[self.mask] = 0  #小于0的ReLu都为0
 
         return out
 
     def backward(self, dout):
+        #如果正向传播时的输入值小于等于0，则反向传播的值为0
+        #因此，反向传播中会使用正向传播时保存的 mask，将从上游传来的 dout的
+        #mask中的元素为True的地方设为0
         dout[self.mask] = 0
         dx = dout
 

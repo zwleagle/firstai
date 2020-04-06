@@ -28,7 +28,7 @@ for i in range(iters_num):
     t_batch = t_train[batch_mask]
     
     # 梯度
-    #grad = network.numerical_gradient(x_batch, t_batch)
+#    grad = network.numerical_gradient(x_batch, t_batch)
     grad = network.gradient(x_batch, t_batch)
     
     # 更新
@@ -43,4 +43,4 @@ for i in range(iters_num):
         test_acc = network.accuracy(x_test, t_test)
         train_acc_list.append(train_acc)
         test_acc_list.append(test_acc)
-        print(train_acc, test_acc)
+        print(train_acc, test_acc, i)
